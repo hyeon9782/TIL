@@ -1,7 +1,13 @@
-const List = () => {
+type Props = {
+  tasks: any[];
+};
+
+const List = ({ tasks }: Props) => {
   return (
     <ul>
-      <li>아무 일도 하기 싫다.</li>
+      {tasks.map((task: any) => (
+        <li key={task.id}>{task.title}</li>
+      ))}
     </ul>
   );
 };
