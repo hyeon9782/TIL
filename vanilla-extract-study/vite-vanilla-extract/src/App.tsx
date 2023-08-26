@@ -25,7 +25,9 @@ function App() {
       <div className={todoListBlock}>
         <div className={todayText}>{`${year}년 ${month}월 ${date}일`}</div>
         <div className={dayText}>{`${dayList[day]}요일`}</div>
-        <div className={todoText}>할 일 {list.length}개 남음</div>
+        <div className={todoText}>
+          할 일 {list.filter((item) => !item.isComplete).length}개 남음
+        </div>
         <List list={list} />
         <TodoInput />
       </div>

@@ -7,7 +7,7 @@ type Props = {
 const List = ({ list }: Props) => {
   return (
     <div className={listBlock}>
-      {list && list.map((item, index) => <TodoItem key={index} item={item} />)}
+      {list && list.map((item) => <TodoItem key={item.id} item={item} />)}
     </div>
   );
 };
