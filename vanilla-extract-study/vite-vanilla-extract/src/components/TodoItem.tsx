@@ -5,8 +5,8 @@ type Props = {
   item: Item;
 };
 const Item = ({ item }: Props) => {
-  const [removeTodo, modifyTodo] = useTodoStore((state) => {
-    return [state.removeTodo, state.modifyTodo];
+  const [removeTodo, modifyTodo, checkTodo] = useTodoStore((state) => {
+    return [state.removeTodo, state.modifyTodo, state.checkTodo];
   });
   const [content, setContent] = useState("");
   const [isEdit, setIsEdit] = useState(false);
@@ -27,6 +27,7 @@ const Item = ({ item }: Props) => {
         type="checkbox"
         defaultChecked={item.isComplete}
         className={todoCheckBox}
+        onClick={() => checkTodo(item.id)}
       />
       {!isEdit ? (
         <div>{item.content}</div>

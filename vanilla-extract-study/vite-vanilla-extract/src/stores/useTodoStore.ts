@@ -14,6 +14,7 @@ type Action = {
   appendTodo: (content: string) => void;
   modifyTodo: (content: string, id: number) => void;
   removeTodo: (id: number) => void;
+  checkTodo: (id: number) => void;
 };
 
 let id = 0;
@@ -33,6 +34,12 @@ const useTodoStore = create<State & Action>((set) => ({
   removeTodo: (id: number) =>
     set((state) => ({
       list: state.list.filter((item) => item.id !== id),
+    })),
+  checkTodo: (id: number) =>
+    set((state) => ({
+      list: state.list.map((item) =>
+        item.id === id ? { ...item, isComplete: !item.isComplete } : item
+      ),
     })),
 }));
 

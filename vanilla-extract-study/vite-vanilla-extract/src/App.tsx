@@ -19,6 +19,7 @@ function App() {
   const day = today.getDay();
 
   const list = useTodoStore((state) => state.list);
+  const completeLength = list.filter((item) => !item.isComplete).length;
 
   return (
     <div className={`${container} ${flexCenter}`}>
@@ -26,7 +27,13 @@ function App() {
         <div className={todayText}>{`${year}년 ${month}월 ${date}일`}</div>
         <div className={dayText}>{`${dayList[day]}요일`}</div>
         <div className={todoText}>
-          할 일 {list.filter((item) => !item.isComplete).length}개 남음
+          {list.length === 0
+            ? completeLength !== 0
+              ? `할 일 ${completeLength}개 남음`
+              : `할 일을 등록해주세요!`
+            : completeLength !== 0
+            ? `할 일 ${completeLength}개 남음`
+            : `오늘 할 일을 모두 완료했어요!🎉`}
         </div>
         <List list={list} />
         <TodoInput />
