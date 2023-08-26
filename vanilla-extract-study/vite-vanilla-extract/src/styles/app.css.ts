@@ -53,6 +53,13 @@ export const itemBlock = style({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  ":hover": {
+    background: "lightblue",
+  },
+});
+
+export const checkedItem = style({
+  color: "lightgray",
 });
 
 export const iconBox = style({

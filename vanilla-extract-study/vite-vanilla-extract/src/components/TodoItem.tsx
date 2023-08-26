@@ -1,6 +1,12 @@
 import { useState } from "react";
 import useTodoStore, { Item } from "../stores/useTodoStore";
-import { iconBox, itemBlock, todoCheckBox, todoInput } from "../styles/app.css";
+import {
+  checkedItem,
+  iconBox,
+  itemBlock,
+  todoCheckBox,
+  todoInput,
+} from "../styles/app.css";
 type Props = {
   item: Item;
 };
@@ -10,6 +16,7 @@ const Item = ({ item }: Props) => {
   });
   const [content, setContent] = useState("");
   const [isEdit, setIsEdit] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const handleClickEdit = () => {
     setContent(item.content);
@@ -21,16 +28,21 @@ const Item = ({ item }: Props) => {
     setIsEdit(false);
   };
 
+  const handleCheckBox = () => {
+    checkTodo(item.id);
+    setChecked(!checked);
+  };
+
   return (
     <div className={itemBlock}>
       <input
         type="checkbox"
         defaultChecked={item.isComplete}
         className={todoCheckBox}
-        onClick={() => checkTodo(item.id)}
+        onClick={() => handleCheckBox()}
       />
       {!isEdit ? (
-        <div>{item.content}</div>
+        <div className={checked ? checkedItem : ""}>{item.content}</div>
       ) : (
         <input
           type="text"
