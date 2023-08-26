@@ -11,9 +11,8 @@ type State = {
 };
 
 type Action = {
-  selectTodo: (id: number) => Item;
   appendTodo: (content: string) => void;
-  modifyTodo: (item: Item) => void;
+  modifyTodo: (content: string, id: number) => void;
   removeTodo: (id: number) => void;
 };
 
@@ -21,15 +20,14 @@ let id = 0;
 
 const useTodoStore = create<State & Action>((set) => ({
   list: [],
-  selectTodo: (id: number) => list.find((item) => item.id === id),
   appendTodo: (content: string) =>
     set((state) => ({
       list: [...state.list, { id: id++, content, isComplete: false }],
     })),
-  modifyTodo: (item: Item) =>
+  modifyTodo: (content: string, id: number) =>
     set((state) => ({
       list: state.list.map((prevItem) =>
-        prevItem.id === item.id ? item : prevItem
+        prevItem.id === id ? { ...prevItem, content } : prevItem
       ),
     })),
   removeTodo: (id: number) =>

@@ -35,7 +35,12 @@ export const todoInput = style({
   borderStyle: "solid",
   borderColor: "lightgray",
   padding: "10px",
-  fontSize: "1.2rem",
+  fontSize: "1rem",
+});
+
+export const todoCheckBox = style({
+  width: 30,
+  height: 30,
 });
 
 export const listBlock = style({
@@ -45,6 +50,13 @@ export const listBlock = style({
 });
 
 export const itemBlock = style({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+});
+
+export const iconBox = style({
+  fontSize: "1.3rem",
   display: "flex",
 });
 
