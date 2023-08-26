@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type Item = {
+export type Item = {
   content: string;
   isComplete: boolean;
 };
@@ -10,16 +10,17 @@ type State = {
 };
 
 type Action = {
-  appendTodo: (item: Item) => void;
-  removeTodo: (id: number) => void;
+  appendTodo: (content: string) => void;
+  //   modifyTodo: (item: Item) => void;
+  //   removeTodo: (id: number) => void;
 };
 
 const useTodoStore = create<State & Action>((set) => ({
   list: [],
-  appendTodo: (item: Item) => set((state) => ({ content: state.list.content })),
-  modifyTodo: (item: Item) =>
-    set((state) => ({ conntent: state.list.content })),
-  removeTodo: (id: number) => set((state) => ({ content: state.list.content })),
+  appendTodo: (content: string) =>
+    set((state) => ({
+      list: [...state.list, { content, isComplete: false }],
+    })),
 }));
 
 export default useTodoStore;

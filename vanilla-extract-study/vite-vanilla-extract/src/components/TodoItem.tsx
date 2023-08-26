@@ -1,12 +1,13 @@
+import { Item } from "../stores/useTodoStore";
 import { itemBlock } from "../styles/app.css";
 type Props = {
-  item: any;
+  item: Item;
 };
 const Item = ({ item }: Props) => {
   return (
     <div className={itemBlock}>
-      <input type="radio" />
-      <div>아침 산책</div>
+      <input type="radio" defaultChecked={item.isComplete} />
+      <div>{item.content}</div>
       <div>❌</div>
     </div>
   );

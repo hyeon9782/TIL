@@ -1,7 +1,7 @@
 import { style, globalStyle } from "@vanilla-extract/css";
 
 export const container = style({
-  background: "lightgray",
+  background: "rgb(233, 236, 239)",
   height: "100vh",
 });
 
@@ -10,6 +10,32 @@ export const todoListBlock = style({
   width: 500,
   background: "white",
   borderRadius: 10,
+  padding: 10,
+});
+
+export const todayText = style({
+  fontWeight: "bold",
+  fontSize: "2rem",
+});
+
+export const dayText = style({
+  color: "gray",
+  fontSize: "1.2rem",
+});
+
+export const todoText = style({
+  color: "rgb(32, 201, 151)",
+  fontWeight: "bold",
+});
+
+export const todoInput = style({
+  width: "100%",
+  borderRadius: 3,
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "lightgray",
+  padding: "10px",
+  fontSize: "1.2rem",
 });
 
 export const listBlock = style({
@@ -30,4 +56,5 @@ export const flexCenter = style({
 
 globalStyle("body", {
   margin: 0,
+  boxSizing: "border-box",
 });
